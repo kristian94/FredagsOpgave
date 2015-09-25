@@ -10,27 +10,29 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>New Order</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
     </body>
 </html>
 
 
 <%
-    String cno = request.getParameter("customerNumber");
-    String cname = "'" + request.getParameter("customerName") + "'";
-    String strt = "'" + request.getParameter("street") + "'";
-    String zp = request.getParameter("zip");
-    String phn = request.getParameter("phone");
+    String ono = request.getParameter("Ordernumber");
+    String pno = "'" + request.getParameter("Partnumber") + "'";
+    String qty = "'" + request.getParameter("Quantity") + "'";
+    String cno = request.getParameter("Customernumber");
+    String eno = request.getParameter("Employenumber");
+    String received = request.getParameter("Received");
+    String shipped = request.getParameter("Shipped");
     Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbcexerise", "admin", "aergvOCh2202");
     Statement st = con.createStatement();
     try
     {
         Class.forName("com.mysql.jdbc.Driver");
 
-        String query = "INSERT INTO customers VALUES (" + cno + "," + cname + "," + strt + "," + zp + "," + phn + ")";
+        String query = "INSERT INTO odetails VALUES (" + ono + "," + pno + "," + qty + ")" +
+                "INSERT INTO orders VALUES (" + ono + "," + cno + "," + eno + "," + received + "," + shipped + ")";
         st.executeUpdate(query);
 
     } catch (Exception ee)
