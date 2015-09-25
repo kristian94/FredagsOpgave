@@ -31,5 +31,6 @@
     Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbcexerise", "Kristian", "mauw2855");
     Statement st = con.createStatement();
     st.executeUpdate(query);
+    //asdasd
     
 %>
