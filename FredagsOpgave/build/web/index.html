@@ -12,16 +12,19 @@ and open the template in the editor.
     </head>
     <body>
         <div><h3>Menu</h3></div>
-        <form action="pageOne.jsp">
+        <form action="viewDB.jsp" method="get">
+            View databases:
+            <button name="subject" type="submit" value="Employees">Employees</button>
+            <button name="subject" type="submit" value="Customers">Customers</button>
+        </form>
+        <form action="viewCustomers.jsp">
             <button name="Employees">
-                Employees
+                View Employees
+
             </button>
         </form>
-        <form action="newCustomer.jsp">
-            <button name="newCustomer">
-                Register Customer
-            </button>
-        </form>
+        <BR>
+        <BR>
         <form method="post" action="newCustomer.jsp">
             <fieldset>
                 <legend>Register Customer</legend>
@@ -44,6 +47,6 @@ and open the template in the editor.
                 <input type="submit" value="Register">
             </fieldset>
         </form>
-        
+
     </body>
 </html>
