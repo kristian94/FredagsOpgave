@@ -24,12 +24,23 @@
     String strt = "'" + request.getParameter("street") + "'";
     String zp = request.getParameter("zip");
     String phn = request.getParameter("phone");
-    
-    String query = "INSERT INTO customers VALUES ("+cno+","+cname+","+strt+","+zp+","+phn+")";
-    
-    Class.forName("com.mysql.jdbc.Driver");
-    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbcexerise", "Kristian", "mauw2855");
+    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbcexerise", "admin", "aergvOCh2202");
     Statement st = con.createStatement();
-    st.executeUpdate(query);
-    
+    try
+    {
+        Class.forName("com.mysql.jdbc.Driver");
+
+        String query = "INSERT INTO customers VALUES (" + cno + "," + cname + "," + strt + "," + zp + "," + phn + ")";
+        st.executeUpdate(query);
+
+    } catch (Exception ee)
+    {
+        out.print("Error: " + ee);
+    } finally
+    {
+        st.close();
+        con.close();
+    }
+
+
 %>
