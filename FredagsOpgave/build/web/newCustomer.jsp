@@ -4,6 +4,7 @@
     Author     : Kristian
 --%>
 
+<%@page import="java.sql.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -18,9 +19,17 @@
 
 
 <%
-    int cno = request.getParameter();
-    String cname;
-    String street;
-    int zip;
-    String phone;
+    String cno = request.getParameter("customerNumber");
+    String cname = "'" + request.getParameter("customerName") + "'";
+    String strt = "'" + request.getParameter("street") + "'";
+    String zp = request.getParameter("zip");
+    String phn = request.getParameter("phone");
+    
+    String query = "INSERT INTO customers VALUES ("+cno+","+cname+","+strt+","+zp+","+phn+")";
+    
+    Class.forName("com.mysql.jdbc.Driver");
+    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbcexerise", "Kristian", "mauw2855");
+    Statement st = con.createStatement();
+    st.executeUpdate(query);
+    
 %>
